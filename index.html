@@ -502,7 +502,7 @@ async function aiCall(type){
   g('ail').className='ail show';g('air').className='air';
   const body=JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:400,messages:[{role:'user',content:prompt}]});
   const hdrs={'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-allow-browser':'true'};
-  const urls=['https://api.anthropic.com/v1/messages'];
+  const urls=['https://psp-proxy.luis-lpzrm.workers.dev/','https://api.anthropic.com/v1/messages'];
   let done=false;
   for(const url of urls){
     try{
