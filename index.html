@@ -49,7 +49,7 @@ body{font-family:var(--ff);background:var(--bg);color:var(--text);font-size:15px
 .chg{background:rgba(45,212,160,.12);color:var(--green)}.chr{background:rgba(240,96,96,.12);color:var(--red)}
 .pbar-w{height:2px;background:var(--border);flex-shrink:0}
 .pbar-f{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .35s ease}
-.qbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:20px 16px 16px}
+.qbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:20px 16px 20px}
 .qnum{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:1.5px;margin-bottom:10px;text-transform:uppercase}
 .qtext{font-size:clamp(15px,4.2vw,17px);font-weight:600;line-height:1.55;margin-bottom:20px}
 .opts{display:flex;flex-direction:column;gap:8px}
@@ -76,9 +76,9 @@ body{font-family:var(--ff);background:var(--bg);color:var(--text);font-size:15px
 .air{display:none;margin-top:10px;background:rgba(155,114,245,.05);border:1px solid rgba(155,114,245,.15);border-radius:var(--r);padding:14px;font-size:12px;line-height:1.65;color:var(--text)}
 .air.show{display:block}
 .air-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--accent2);margin-bottom:8px;text-transform:uppercase;font-family:var(--mono)}
-.nwrap{padding:12px 16px calc(var(--sb) + 12px);background:var(--bg);border-top:1px solid var(--border);flex-shrink:0;display:none}
+.nwrap{padding:12px 16px calc(var(--sb) + 64px);background:var(--bg);border-top:1px solid var(--border);flex-shrink:0;display:none}
 .nwrap.show{display:block}
-.nbtn{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:var(--r);padding:15px;color:#fff;font-family:var(--ff);font-size:15px;font-weight:700;cursor:pointer;transition:opacity .15s}
+.nbtn{width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:var(--r);padding:16px;color:#fff;font-family:var(--ff);font-size:15px;font-weight:700;cursor:pointer;transition:opacity .15s;min-height:52px;-webkit-appearance:none}
 .nbtn:active{opacity:.85}
 .bc{display:none;flex-direction:column;gap:8px;margin-bottom:8px}
 .bc.show{display:flex}
@@ -128,7 +128,7 @@ body{font-family:var(--ff);background:var(--bg);color:var(--text);font-size:15px
 .ffilter::-webkit-scrollbar{display:none}
 .ffbtn{flex-shrink:0;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:var(--ff);white-space:nowrap;transition:all .12s}
 .ffbtn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.bnav{display:flex;background:var(--surface);border-top:1px solid var(--border);padding:0 0 var(--sb) 0;flex-shrink:0;position:fixed;bottom:0;left:0;right:0;z-index:50}
+.bnav{display:flex;background:var(--surface);border-top:1px solid var(--border);padding:0 0 var(--sb) 0;flex-shrink:0;position:fixed;bottom:0;left:0;right:0;z-index:50}#quiz.active~.bnav,#results.active~.bnav{display:none}
 .nnbtn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px 9px;background:none;border:none;cursor:pointer;font-family:var(--ff)}
 .nnbtn .ni{font-size:20px;line-height:1}
 .nnbtn .nl{font-size:9px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;color:var(--muted);transition:color .12s}
@@ -268,11 +268,11 @@ const QS={"uf1": [{"q": "\u00bfCu\u00e1l es la definici\u00f3n correcta de \"Pro
 
 
 const BL=[
-  {id:'uf1',name:'UF1 \u2014 Seguridad',icon:'\uD83D\uDD10',cls:'u1',desc:'Criptograf\u00eda, hash, RSA, SSL, autenticaci\u00f3n'},
-  {id:'uf2',name:'UF2 \u2014 Procesos y SO',icon:'\u2699\uFE0F',cls:'u2',desc:'Procesos, estados, Bernstein, planificaci\u00f3n'},
-  {id:'uf3',name:'UF3 \u2014 Hilos',icon:'\uD83E\uDDF5',cls:'u3',desc:'Thread, ciclo de vida, sync, deadlock'},
-  {id:'uf4',name:'UF4 \u2014 Redes',icon:'\uD83C\uDF10',cls:'u4',desc:'TCP/UDP, sockets, Java, puertos'},
-  {id:'uf5',name:'UF5 \u2014 Servicios Web',icon:'\u2601\uFE0F',cls:'u5',desc:'REST, SOAP, RMI, FTP, SMTP'},
+  {id:'uf1',name:'UF1 — Seguridad',icon:'🔐',cls:'u1',desc:'Criptografía, hash, RSA, SSL, autenticación'},
+  {id:'uf2',name:'UF2 — Procesos y SO',icon:'⚙️',cls:'u2',desc:'Procesos, estados, Bernstein, planificación'},
+  {id:'uf3',name:'UF3 — Hilos',icon:'🧵',cls:'u3',desc:'Thread, ciclo de vida, sync, deadlock'},
+  {id:'uf4',name:'UF4 — Redes',icon:'🌐',cls:'u4',desc:'TCP/UDP, sockets, Java, puertos'},
+  {id:'uf5',name:'UF5 — Servicios Web',icon:'☁️',cls:'u5',desc:'REST, SOAP, RMI, FTP, SMTP'},
 ];
 
 const FC=[...Object.entries(QS).flatMap(([ufKey,qs])=>{
@@ -315,7 +315,7 @@ function buildHome(){
   });
   const bb=document.createElement('button');
   bb.className='bblock ub';bb.onclick=startBankSession;
-  bb.innerHTML='<div class="bicon">\uD83D\uDD25</div><div class="binfo"><div class="bname">Banco de Fallos</div><div class="bmeta" id="bm">\u2014</div></div><div class="bcount" id="bc-n">0</div>';
+  bb.innerHTML='<div class="bicon">🔥</div><div class="binfo"><div class="bname">Banco de Fallos</div><div class="bmeta" id="bm">\u2014</div></div><div class="bcount" id="bc-n">0</div>';
   grid.appendChild(bb);
 }
 
@@ -340,10 +340,10 @@ function startBlock(bid){
 }
 
 function startBankSession(){
-  if(!ST.failBank.length){toast('El banco est\u00e1 vac\u00edo \uD83C\uDF89');return;}
+  if(!ST.failBank.length){toast('El banco est\u00e1 vac\u00edo 🎉');return;}
   const qs=sh([...ST.failBank]);
   SE={qs,idx:0,ok:0,ko:0,fails:[],bid:'bank',isBank:true,answered:false};
-  g('qtitle').textContent='\uD83D\uDD25 Banco de Fallos';g('qsub').textContent=qs.length+' preguntas';
+  g('qtitle').textContent='🔥 Banco de Fallos';g('qsub').textContent=qs.length+' preguntas';
   document.querySelectorAll('.nnbtn').forEach(x=>x.classList.remove('active'));
   showScreen('quiz');renderQ();
 }
@@ -391,7 +391,7 @@ function showFb(ok,just,truco,trampa){
   hdr.className='fbhdr '+(ok?'ok':'ko');
   hdr.textContent=ok?'\u2713 Correcto':'\u2717 Incorrecto';
   txt.textContent=just;
-  if(truco){tr.textContent='\uD83D\uDCA1 '+truco;tr.style.display='block';}else tr.style.display='none';
+  if(truco){tr.textContent='💡 '+truco;tr.style.display='block';}else tr.style.display='none';
   if(trampa){tp.textContent='\u26A0\uFE0F '+trampa;tp.style.display='block';}else tp.style.display='none';
 }
 
@@ -403,13 +403,13 @@ function showResults(){
   const tot=SE.qs.length,ok=SE.ok;
   const pct=Math.round(ok/tot*100);
   if(!SE.isBank){if(!ST.progress[SE.bid])ST.progress[SE.bid]={};ST.progress[SE.bid].done=Math.max(ST.progress[SE.bid].done||0,tot);save();}
-  g('ricon').textContent=pct>=80?'\uD83C\uDFC6':pct>=60?'\uD83D\uDC4D':'\uD83D\uDCDA';
+  g('ricon').textContent=pct>=80?'🏆':pct>=60?'👍':'📚';
   g('rscore').textContent=ok+'/'+tot;
   g('rlbl').textContent=pct>=80?'\u00a1Excelente!':pct>=60?'Buen trabajo':'Hay que repasar m\u00e1s';
   g('rok').textContent=ok;g('rko').textContent=SE.ko;
   g('rpct').textContent=pct+'%';g('rbank').textContent=ST.failBank.length;
   const rf=g('rfails');
-  if(SE.fails.length>0){rf.style.display='';rf.textContent='\uD83D\uDD25 Repasar '+SE.fails.length+' fallo'+(SE.fails.length!==1?'s':'');}
+  if(SE.fails.length>0){rf.style.display='';rf.textContent='🔥 Repasar '+SE.fails.length+' fallo'+(SE.fails.length!==1?'s':'');}
   else rf.style.display='none';
   g('rall').style.display=SE.isBank?'none':'';
   updateStats();showScreen('results');
@@ -440,18 +440,18 @@ function renderBank(){
   if(!ST.failBank.length){list.innerHTML='<div class="empty"><div class="eico">\u2713</div><div>Sin fallos<br>\u00a1Buen trabajo!</div></div>';return;}
   list.innerHTML='';
   ST.failBank.forEach((q,i)=>{
-    const b=BL.find(x=>x.id===q.blockId)||{icon:'\u2753',name:'?'};
+    const b=BL.find(x=>x.id===q.blockId)||{icon:'❓',name:'?'};
     const d=document.createElement('div');d.className='bitem';
     d.innerHTML='<div class="biq">'+q.q+'</div><div class="bimeta"><span><span class="fdot"></span>Fallada '+(q.failCount||1)+'x \u00b7 '+b.icon+' '+b.name+'</span><button class="lbtn" onclick="removeBank('+i+')">\u2713 Ya la s\u00e9</button></div>';
     list.appendChild(d);
   });
 }
-function removeBank(i){ST.failBank.splice(i,1);save();updateStats();renderBank();toast('\u00a1Eliminada! \uD83C\uDF89');}
+function removeBank(i){ST.failBank.splice(i,1);save();updateStats();renderBank();toast('\u00a1Eliminada! 🎉');}
 
 // FLASHCARDS
 function buildFilters(){
   const wrap=g('ffilter');wrap.innerHTML='';
-  const filters=[{key:'all',label:'Todas'},...BL.map(b=>({key:b.id,label:'UF'+(BL.indexOf(b)+1)})),{key:'5',label:'\uD83D\uDD34 5/5'},{key:'4',label:'\uD83D\uDFE0 4/5+'}];
+  const filters=[{key:'all',label:'Todas'},...BL.map(b=>({key:b.id,label:'UF'+(BL.indexOf(b)+1)})),{key:'5',label:'🔴 5/5'},{key:'4',label:'🟠 4/5+'}];
   filters.forEach(f=>{
     const btn=document.createElement('button');btn.className='ffbtn'+(f.key==='all'?' active':'');btn.textContent=f.label;
     btn.onclick=()=>{
@@ -471,7 +471,7 @@ function renderFC(){
   const c=fcArr[fcIdx];
   g('fuf-f').textContent=c.uf;g('fuf-b').textContent=c.uf;
   g('fconc').textContent=c.concepto;g('fdef').textContent=c.definicion;
-  g('ftruco').textContent='\uD83D\uDCA1 '+c.truco;g('ftrampa').textContent='\u26A0\uFE0F '+c.trampa;
+  g('ftruco').textContent='💡 '+c.truco;g('ftrampa').textContent='\u26A0\uFE0F '+c.trampa;
   const fn=Math.min(c.freq_num||3,5);
   const ff=g('ffreq');ff.className='ffreq f'+fn;ff.textContent=c.frecuencia+' \u00b7 '+c.prioridad;
   g('fctr').textContent=(fcIdx+1)+'/'+fcArr.length;
@@ -487,28 +487,46 @@ function getKey(){
   return k.trim();
 }
 async function aiCall(type){
-  const q=SE.qs[SE.idx];const k=getKey();if(!k)return;
+  const q=SE.qs[SE.idx];
+  const k=getKey();if(!k)return;
   const rc=q.options[q.correct];
-  const prompts={
-    similar:'Eres profesor PSP/DAM. Genera UNA pregunta tipo test (4 opciones A-D) similar sobre el mismo concepto.\nPREGUNTA: '+q.q+'\nRESPUESTA: '+rc+'\nOpciones incorrectas deben ser muy similares (trampas). Incluye: RESPUESTA: [letra] - [explicacion]. Solo pregunta+opciones+respuesta.',
-    harder:'Eres profesor PSP/DAM. UNA pregunta MAS DIFICIL sobre: "'+( q.concepto||q.q)+'"\nDef: '+rc+'\nUsa trampa conceptual o codigo Java. Opciones muy similares. Incluye: RESPUESTA: [letra] - [explicacion].',
-    explain:'Explica en 3-4 lineas el concepto PSP: "'+( q.concepto||q.q)+'"\nDef: '+rc+'\nDa un truco mnemotecnico. Muy conciso, en espanol.'
-  };
+  const concepto=q.concepto||q.q;
+  let prompt='';
+  if(type==='similar'){
+    prompt='Eres profesor PSP/DAM. Genera UNA pregunta tipo test (4 opciones A-D) similar.\nPREGUNTA: '+q.q+'\nRESPUESTA CORRECTA: '+rc+'\nOpciones incorrectas muy similares (trampas tipicas de examen).\nFormato exacto:\nPREGUNTA: ...\nA) ...\nB) ...\nC) ...\nD) ...\nRESPUESTA: [letra] - [razon breve]';
+  }else if(type==='harder'){
+    prompt='Eres profesor PSP/DAM. UNA pregunta MAS DIFICIL sobre el concepto: '+concepto+'\nDefinicion correcta: '+rc+'\nIncluye trampa conceptual o codigo Java. Opciones muy similares.\nFormato:\nPREGUNTA: ...\nA) ...\nB) ...\nC) ...\nD) ...\nRESPUESTA: [letra] - [razon]';
+  }else{
+    prompt='Explica brevemente el concepto PSP: '+concepto+'\nDefinicion: '+rc+'\nDa un truco mnemotecnico corto. 3-4 lineas max, en espanol.';
+  }
   g('ail').className='ail show';g('air').className='air';
-  try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-allow-browser':'true'},
-      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:500,messages:[{role:'user',content:prompts[type]}]})
-    });
+  const body=JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:400,messages:[{role:'user',content:prompt}]});
+  const hdrs={'Content-Type':'application/json','x-api-key':k,'anthropic-version':'2023-06-01','anthropic-dangerous-allow-browser':'true'};
+  const urls=['https://api.anthropic.com/v1/messages'];
+  let done=false;
+  for(const url of urls){
+    try{
+      const r=await fetch(url,{method:'POST',headers:hdrs,body});
+      if(r.status===401){
+        localStorage.removeItem('psp_key');
+        g('ail').className='ail';
+        g('airc').textContent='API key incorrecta. Pulsa de nuevo para reintroducirla.';
+        g('air').className='air show';return;
+      }
+      if(!r.ok)continue;
+      const d=await r.json();
+      let t=d.content?d.content.map(function(c){return c.text||'';}).join(''):'Sin respuesta';
+      t=t.replace(/<[^>]*>/g,'').replace(/\*\*(.*?)\*\*/g,'<b>$1</b>').split('\n').join('<br>');
+      g('ail').className='ail';g('airc').innerHTML=t;g('air').className='air show';
+      setTimeout(function(){g('air').scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+      done=true;break;
+    }catch(e){continue;}
+  }
+  if(!done){
     g('ail').className='ail';
-    if(r.status===401){localStorage.removeItem('psp_key');g('airc').textContent='API key incorrecta.';g('air').className='air show';return;}
-    const d=await r.json();
-    let t=d.content?.map(c=>c.text||'').join('')||'Sin respuesta';
-    t=t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
-    g('airc').innerHTML=t;g('air').className='air show';
-    setTimeout(()=>g('air').scrollIntoView({behavior:'smooth',block:'nearest'}),100);
-  }catch(e){g('ail').className='ail';g('airc').textContent='Error de conexion.';g('air').className='air show';}
+    g('airc').innerHTML='<b>No se puede conectar desde archivo local.</b><br><br>Para usar la IA debes subir el HTML a GitHub Pages y abrirlo desde ahi:<br>1. github.com &rarr; New repo &rarr; Sube index.html<br>2. Settings &rarr; Pages &rarr; activar<br>3. Abre la URL en Safari &rarr; Añadir a pantalla de inicio';
+    g('air').className='air show';
+  }
 }
 
 let toastT;
